@@ -19,7 +19,7 @@
                         <label for="email">E-mail</label>
                         <div class="relative w-full">
                             <span class="absolute left-3 bottom-2 pointer-events-none"><i class="bi bi-envelope"></i></span>
-                            <input type="email" name="email" id="email" placeholder="exemplo@email.com" class="bg-white p-2 border border-stone-400 focus:outline-verde-pricipal rounded-lg w-full pl-10">
+                            <input type="email" name="email" id="email" placeholder="exemplo@email.com" class="bg-white p-2 border border-stone-400 focus:outline-verde-pricipal rounded-lg w-full pl-10 @error('email') outline-red-500 outline @enderror">
                         </div>
                         @error('email')
                         <span class="text-red-500 text-sm">{{ $message }}</span>
@@ -31,7 +31,7 @@
                         <div class="relative w-full">
                             <span class="absolute left-3 bottom-2.5 pointer-events-none"><i class="bi bi-lock"></i></span>
                             <span class="absolute right-3 bottom-2 cursor-pointer" id="eye"><i class="bi bi-eye"></i></span>
-                            <input type="password" name="password" id="password" placeholder="********" class="bg-white p-2 border border-stone-400 focus:outline-verde-pricipal rounded-lg w-full pl-10">
+                            <input type="password" name="password" id="password" placeholder="********" class="bg-white p-2 border border-stone-400 focus:outline-verde-pricipal rounded-lg w-full pl-10 @error('password') outline-red-500 outline @enderror">
                         </div>
                         @error('password')
                             <span class="text-red-500 text-sm">{{ $message }}</span>
