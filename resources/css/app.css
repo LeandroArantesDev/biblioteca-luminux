@@ -1,0 +1,46 @@
+@import "tailwindcss";
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Petit+Formal+Script&display=swap");
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+
+@theme {
+    --font-sans:
+        "Instrument Sans", ui-sans-serif, system-ui, sans-serif,
+        "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+        "Noto Color Emoji";
+
+    --color-verde-pricipal: #1d4f3b;
+    --color-verde-pricipal-hover: #052f26;
+    --color-verde-pricipal-opaco: #1d4f3b80;
+    --color-verde-pricipal-escuro: #0f291e;
+
+    --font-inter: "Inter", sans-serif;
+    --font-petit: "Petit Formal Script", cursive;
+}
+
+/* Pré-definições Gerais */
+@layer base {
+    html {
+        @apply scroll-smooth;
+    }
+
+    body {
+        @apply bg-neutral-50 text-stone-900 text-lg font-inter;
+    }
+
+    * {
+        @apply box-border p-0 m-0 duration-300 ease-linear scroll-mt-16;
+    }
+}
+
+@layer components {
+    .btn-primario {
+        @apply px-6 py-4 cursor-pointer text-white bg-verde-pricipal hover:bg-verde-pricipal-hover hover:scale-102 rounded-xl;
+    }
+
+    .btn-secundario {
+        @apply px-6 py-4 cursor-pointer text-verde-pricipal-escuro bg-neutral-100 border border-stone-400 hover:bg-neutral-200 hover:scale-105 rounded-xl;
+    }
+}
