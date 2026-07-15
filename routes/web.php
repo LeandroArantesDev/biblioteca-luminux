@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\SiteController;
 use Illuminate\Support\Facades\Route;
 
@@ -9,7 +10,10 @@ Route::get('/', [SiteController::class, 'index'])->name('site.home');
 
 // rotas de login e autenticação
 Route::get('/login', [LoginController::class, 'index'])->name('site.login');
+Route::get('/register', [RegisterController::class, 'index'])->name('site.register');
 Route::post('login', [LoginController::class, 'authenticate'])->name('auth.login');
+Route::post('register', [RegisterController::class, 'store'])->name('auth.register');
+
 
 // rotas privadas, protegidas por autenticação
 Route::middleware('auth')->group(function () {

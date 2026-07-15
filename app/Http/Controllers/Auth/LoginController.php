@@ -19,15 +19,15 @@ class LoginController extends Controller
     {
         $credentials = $request->only('email', 'password');
 
-        if(Auth::attempt($credentials)) {
+        if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
             return redirect()->intended(route('site.dashboard'));
-        } else {
-            return back()->withErrors([
-                'email' => 'Email Incorreto.',
-                'password' => 'Senha Incorreta.',
-            ]);
         }
+
+        return back()->withErrors([
+            'email' => 'Email Incorreto.',
+            'password' => 'Senha Incorreta.',
+        ]);
     }
 
     public function logout(Request $request): RedirectResponse

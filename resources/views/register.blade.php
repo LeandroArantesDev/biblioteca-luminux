@@ -11,13 +11,25 @@
                     leitores e embarque em jornadas inesquecíveis.</p>
             </div>
             <div class="flex justify-center items-center">
-                <form action="{{ route('auth.login') }}" method="post"
+                <form action="{{ route('auth.register') }}" method="post"
                     class="w-6/7 flex flex-col justify-center items-baseline gap-4">
                     @csrf
                     <div>
-                        <h2 class="font-bold text-2xl text-verde-pricipal-escuro">Fazer Login</h2>
-                        <p class="text-stone-600 text-bas">Entre com seus dados para acessar o sistema.</p>
+                        <h2 class="font-bold text-2xl text-verde-pricipal-escuro">Fazer Registro</h2>
+                        <p class="text-stone-600 text-bas">Preencha os campos abaixo para criar sua conta.</p>
                     </div>
+                    <x-input>
+                        <label for="name">Nome Completo</label>
+                        <div class="relative w-full">
+                            <span class="absolute left-3 bottom-2 pointer-events-none"><i
+                                    class="bi bi-person"></i></span>
+                            <input type="text" name="name" id="name" placeholder="Digite seu nome"
+                                class="bg-white p-2 border border-stone-400 focus:outline-verde-pricipal rounded-lg w-full pl-10 @error('name') outline-red-500 outline @enderror">
+                        </div>
+                        @error('name')
+                            <span class="text-red-500 text-sm">{{ $message }}</span>
+                        @enderror
+                    </x-input>
                     <x-input>
                         <label for="email">E-mail</label>
                         <div class="relative w-full">
@@ -32,8 +44,6 @@
                     </x-input>
                     <x-input>
                         <label for="password">Senha</label>
-                        <a href="#" tabindex="-1"
-                            class="text-sm w-full text-right absolute top-0.5 right-0">Esqueceu a senha?</a>
                         <div class="relative w-full">
                             <span class="absolute left-3 bottom-2.5 pointer-events-none"><i
                                     class="bi bi-lock"></i></span>
@@ -46,12 +56,27 @@
                             <span class="text-red-500 text-sm">{{ $message }}</span>
                         @enderror
                     </x-input>
+                    <x-input>
+                        <label for="password_confirmation">Confirmação de Senha</label>
+                        <div class="relative w-full">
+                            <span class="absolute left-3 bottom-2.5 pointer-events-none"><i
+                                    class="bi bi-lock"></i></span>
+                            <span class="absolute right-3 bottom-2 cursor-pointer" id="eye"><i
+                                    class="bi bi-eye"></i></span>
+                            <input type="password" name="password_confirmation" id="password_confirmation"
+                                placeholder="********"
+                                class="bg-white p-2 border border-stone-400 focus:outline-verde-pricipal rounded-lg w-full pl-10 @error('password') outline-red-500 outline @enderror">
+                        </div>
+                        @error('password')
+                            <span class="text-red-500 text-sm">{{ $message }}</span>
+                        @enderror
+                    </x-input>
                     <input type="submit" value="Login" class="btn-primario w-full">
                     <div class="w-full flex flex-col justify-center items-center gap-2">
-                        <p class="text-center w-full text-sm text-stone-600">Não tem uma conta? <a
-                                href="{{ route('site.register') }}"
-                                class="text-verde-pricipal font-semibold w-full text-center hover:text-verde-pricipal-hover">Criar
-                                conta</a></p>
+                        <p class="text-center w-full text-sm text-stone-600">Já tem uma conta? <a
+                                href="{{ route('site.login') }}"
+                                class="text-verde-pricipal font-semibold w-full text-center hover:text-verde-pricipal-hover">Logar</a>
+                        </p>
                         <a href="{{ route('site.home') }}"
                             class="text-verde-pricipal w-full text-center hover:text-verde-pricipal-hover text-sm">Voltar
                             para página principal</a>
